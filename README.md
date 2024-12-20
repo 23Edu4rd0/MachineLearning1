@@ -3,6 +3,7 @@
 
 ### **Descrição do Dataset**
 - **Fonte:** Kaggle (Heart Disease Dataset).
+- **Link:** https://www.kaggle.com/code/prthmgoyl/neuralnetwork-heart-disease-dataset/notebook 
 - **Número de Amostras:** 303 registros.
 - **Variáveis Principais:** Idade, sexo, pressão arterial, colesterol, frequência cardíaca máxima e a variável-alvo (`target`) indicando presença (1) ou ausência (0) de doença cardíaca.
 

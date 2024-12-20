@@ -8,19 +8,16 @@ from sklearn.metrics import classification_report, confusion_matrix, roc_auc_sco
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-# ---- 1. Carregando o Dataset ----
-# Baixar manualmente o dataset em https://www.kaggle.com/prathums/heart-disease-prediction
-# Atualize o caminho conforme o local onde você salvou o arquivo.
+#  Carregando o Dataset 
 df = pd.read_csv("heart.csv")
 
-# ---- 2. Breve Visualização dos Dados ----
+# Breve Visualização dos Dados 
 print("Visualização inicial dos dados:")
 print(df.head())
 print("\nInformações gerais:")
 print(df.info())
 
-# ---- 3. Pré-processamento ----
-# Separando as variáveis preditoras (X) e a variável alvo (y)
+# Pré-processamento 
 X = df.drop(columns=['target'])
 y = df['target']
 
@@ -28,16 +25,16 @@ y = df['target']
 scaler = StandardScaler()
 X_scaled = scaler.fit_transform(X)
 
-# Dividindo o dataset em treino e teste (70% treino, 30% teste)
+# Dividindo o dataset em treino e teste 
 X_train, X_test, y_train, y_test = train_test_split(X_scaled, y, test_size=0.3, random_state=42)
 
-# ---- 4. Treinamento do Modelo ----
-# Utilizando um Classificador de Rede Neural
+# Treinamento do Modelo 
+
 mlp = MLPClassifier(hidden_layer_sizes=(16, 8), max_iter=1000, random_state=42)
 mlp.fit(X_train, y_train)
 
-# ---- 5. Avaliação do Modelo ----
-# Previsões
+# Avaliação do Modelo 
+
 y_pred = mlp.predict(X_test)
 y_pred_prob = mlp.predict_proba(X_test)[:, 1]
 
@@ -67,5 +64,5 @@ plt.ylabel('Taxa de Verdadeiros Positivos')
 plt.legend(loc='lower right')
 plt.show()
 
-# ---- 6. Relatório Final ----
+# Relatório Final 
 print(f"\nAUC da Curva ROC: {roc_auc:.2f}")
